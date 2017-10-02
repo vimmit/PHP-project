@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>	
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" /><link rel="stylesheet" href="stylesheet.css"/>		
+<title>Calculate BMI</title>	
+</head>
+<body bgcolor="#E6E6FA">	
+<h1> Calculate BMI (Body Mass Index) </h1>
+
+<form method="get" action="" style="background-color:#E6E6FA">		
+<font size="4" >Weight:  <input type="number" name="weight" id="wt" /><p id="wunit"></p> <br />	
+	Height: <input type="number" name="height" id="ht" /><p id="hunit"></p><br />		
+	
+BMI Method:<br /><input type="radio" name="BMImethod" value="imperial" id="imp" onclick="changeUnits()" checked/>Imperial	
+	<label><input type="radio" name="BMImethod" value="metric" id="met" onclick="changeUnits()"/> Metric</label><br />
+        
+<br /><button type="button" id="bmiButton" onclick="calcBMI()" style="font-size:17px" class="buttonText">Calculate BMI</button>
+<br />BMI: <input type="text" id="BMI" style="font-size:17px" readonly/>
+<br /><br /><br /><input type="submit" name="Submit" value="Submit" style="font-size:17px" id="bmiButton" class="buttonText"/>
+</font>
+</form>
+
+<script type="text/javascript">
+   document.getElementById("wunit").innerHTML = "(pounds)"
+   document.getElementById("hunit").innerHTML = "(inches)"
+function changeUnits()
+{
+
+  if(document.getElementById("imp").checked == true)
+  {
+    document.getElementById("wunit").innerHTML = "(pounds)"
+    document.getElementById("hunit").innerHTML = "(inches)"
+  }
+  if(document.getElementById("met").checked == true)
+  {
+    document.getElementById("wunit").innerHTML = "(kilograms)"
+    document.getElementById("hunit").innerHTML = "(meters)"
+  }
+  
+}
+function calcBMI()
+{
+  var wt = document.getElementById("wt").value;
+  var ht = document.getElementById("ht").value;
+  var bmi = (wt * 703)/(ht*ht);
+
+  if(ht == "")
+  {
+    alert("Please enter valid height"); 
+  }
+  else
+  {
+    document.getElementById("BMI").value = bmi;  
+  }
+
+}
+
+</script>
+
+</body>
+</html>
